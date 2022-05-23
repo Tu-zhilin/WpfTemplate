@@ -1,0 +1,53 @@
+﻿<Window x:Class="WpfTemplate.Framework.MainWindow.Views.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTemplate.Framework.MainWindow.Views"
+        xmlns:cal="http://caliburnmicro.com"
+        mc:Ignorable="d"
+        Width="{Binding Width,Mode=TwoWay}" 
+        Height="{Binding Height,Mode=TwoWay}"
+        WindowState="{Binding WindowState}"
+        WindowStyle="None"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="CanResizeWithGrip"
+        AllowsTransparency="True"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
+
+    <Border Background="{DynamicResource WindowBackground}"
+            CornerRadius="10"
+            MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid Background="{DynamicResource TitleBarBackground}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title}"
+                               FontSize="15"
+                               Grid.Column="1"
+                               Foreground="{DynamicResource ForeBackground}"
+                               Margin="0,0,10,0"/>
+                        <icon:PackIconMaterial Kind="{Binding Icon}"
+                                               Foreground="{DynamicResource ForeBackground}"/>
+                    </StackPanel>
+                   
+                </Grid>
+                <ContentControl Grid.Row="1" 
+                                cal:View.Model="{Binding ActiveItem}"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
