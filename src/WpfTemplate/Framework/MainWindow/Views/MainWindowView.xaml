@@ -13,37 +13,38 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen" 
         AllowsTransparency="True"
+        Title="{Binding Title}"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
 
     <Border Background="{DynamicResource WindowBackground}"
             CornerRadius="15"
             MouseDown="Border_MouseDown">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal"
+        <ContentControl cal:View.Model="{Binding ActiveItem}"/>
+    </Border>
+</Window>
+
+<!--<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="30"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Grid.Column="1">
-                    <TextBlock Text="{Binding Title}"
+            <TextBlock Text="{Binding Title}"
                                FontSize="15"
                                Grid.Column="1"
                                Foreground="{DynamicResource ForeBackground}"
                                Margin="0,0,10,0"/>
-                    <icon:PackIconMaterial Kind="{Binding Icon}"
+            <icon:PackIconMaterial Kind="{Binding Icon}"
                                                Foreground="{DynamicResource ForeBackground}"/>
-                </StackPanel>
-            </Grid>
-            <ContentControl Grid.Row="1" 
-                                cal:View.Model="{Binding ActiveItem}"/>
-        </Grid>
-    </Border>
-</Window>
+        </StackPanel>
+    </Grid>
+</Grid>-->

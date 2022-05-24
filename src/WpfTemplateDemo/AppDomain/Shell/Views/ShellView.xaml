@@ -5,11 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfTemplateDemo.AppDomain.Shell.Views"
              mc:Ignorable="d" 
+             xmlns:component="clr-namespace:WpfTemplate.Component;assembly=WpfTemplate"
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
-        <TextBlock Text="This is a Wpf Template Demo..."
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <component:TitleBar/>
+        <!--<TextBlock Text="This is a Wpf Template Demo..."
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontSize="30"/>
+                   FontSize="30"/>-->
     </Grid>
 </UserControl>

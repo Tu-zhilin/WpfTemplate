@@ -37,7 +37,7 @@ namespace WpfTemplate.Framework.MainWindow.ViewModels
         /// <summary>
         /// 窗体宽度
         /// </summary>
-        private double _width = 800.0;
+        private double _width = 1280.0;
         public double Width
         {
             get => _width;
@@ -50,7 +50,7 @@ namespace WpfTemplate.Framework.MainWindow.ViewModels
         /// <summary>
         /// 窗体高度
         /// </summary>
-        private double _height = 600.0;
+        private double _height = 720.0;
         public double Height
         {
             get => _height;
