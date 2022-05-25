@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfTemplate.Component"
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel HorizontalAlignment="Right"
@@ -13,14 +14,31 @@
         <Button Style="{DynamicResource windowButtonStyle}"
                 Background="Lime"
                 Width="16"
-                Height="16"/>
+                Height="16"
+                x:Name="minimizeBtn"
+                Click="MinimizeBtn_Click">
+            <icon:PackIconMaterial Kind="WindowMinimize"
+                                   Style="{DynamicResource windowButtonIconStyle}"/>
+        </Button>
+
         <Button Style="{DynamicResource windowButtonStyle}"
                 Background="Yellow"
                 Width="16"
-                Height="16"/>
+                Height="16"
+                x:Name="maximizeBtn"
+                Click="MaximizeBtn_Click">
+            <icon:PackIconMaterial x:Name="maximizeIcon" 
+                                   Kind="WindowMaximize"
+                                   Style="{DynamicResource windowButtonIconStyle}"/>
+        </Button>
         <Button Style="{DynamicResource windowButtonStyle}"
                 Background="Red"
                 Width="16"
-                Height="16"/>
+                Height="16"
+                x:Name="closeBtn"
+                Click="CloseBtn_Click">
+            <icon:PackIconMaterial Kind="WindowClose"
+                                   Style="{DynamicResource windowButtonIconStyle}"/>
+        </Button>
     </StackPanel>
 </UserControl>

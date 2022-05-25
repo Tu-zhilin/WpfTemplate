@@ -10,6 +10,6 @@
     <!--标题栏背景-->
     <SolidColorBrush x:Key="TitleBarBackground" Color="#404040"/>
     <!--字体颜色-->
-    <SolidColorBrush x:Key="ForeBackground" Color="White"/>
+    <SolidColorBrush x:Key="Foreground" Color="White"/>
 
 </ResourceDictionary>

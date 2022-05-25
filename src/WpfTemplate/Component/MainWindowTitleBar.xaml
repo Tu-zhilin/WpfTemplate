@@ -1,13 +1,12 @@
-﻿<UserControl x:Class="WpfTemplate.Component.TitleBar"
+﻿<UserControl x:Class="WpfTemplate.Component.MainWindowTitleBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfTemplate.Component"
-             mc:Ignorable="d"
-             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             d:DesignHeight="30" d:DesignWidth="800"
-             x:Name="titleBar">
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
     <Border CornerRadius="15,15,0,0"
             Background="{DynamicResource TitleBarBackground}">
         <Grid>
@@ -24,7 +23,7 @@
                            FindAncestor,
                            AncestorType={x:Type Window},
                            AncestorLevel=1},Path=Title}"
-                           Foreground="{StaticResource ForeBackground}"
+                           Foreground="{StaticResource Foreground}"
                            FontSize="16"
                            Margin="0,0,10,0"/>
                 <icon:PackIconMaterial Kind="Robot"

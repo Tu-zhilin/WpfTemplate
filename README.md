@@ -18,3 +18,8 @@ Gemini（一个IDE框架）
 
 ## ThemeManager
 样式管理器
+
+## Component
+组件库,提供最基础的组件使用
+1. MainWindowTitleBar（主窗口标题栏）
+2. MainWindowButton（主窗口按钮:最小化、缩放、关闭）

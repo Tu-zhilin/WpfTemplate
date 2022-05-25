@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfTemplate.Component
 {
     /// <summary>
-    /// TitleBar.xaml 的交互逻辑
+    /// MainWindowTitleBar.xaml 的交互逻辑
     /// </summary>
-    public partial class TitleBar : UserControl
+    public partial class MainWindowTitleBar : UserControl
     {
-        public TitleBar()
+        public MainWindowTitleBar()
         {
             InitializeComponent();
         }

@@ -170,8 +170,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Component\TitleBar.xaml.cs">
-      <DependentUpon>TitleBar.xaml</DependentUpon>
+    <Compile Include="Component\MainWindowTitleBar.xaml.cs">
+      <DependentUpon>MainWindowTitleBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Component\WindowButton.xaml.cs">
       <DependentUpon>WindowButton.xaml</DependentUpon>
@@ -218,7 +218,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Component\TitleBar.xaml">
+    <Page Include="Component\MainWindowTitleBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

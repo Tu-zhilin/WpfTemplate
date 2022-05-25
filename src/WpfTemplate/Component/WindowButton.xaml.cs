@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using MahApps.Metro.IconPacks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,45 @@ namespace WpfTemplate.Component
         public WindowButton()
         {
             InitializeComponent();
+        }
+
+        private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Window window = button.CommandParameter as Window;
+            if (window == null)
+                return;
+            window.WindowState = WindowState.Minimized;
+        }
+
+        private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Window window = button.CommandParameter as Window;
+            if (window == null)
+                return;
+            switch (window.WindowState)
+            {
+                case WindowState.Normal:
+                    window.WindowState = WindowState.Maximized;
+                    this.maximizeIcon.Kind = PackIconMaterialKind.DockWindow;
+                    break;
+                case WindowState.Maximized:
+                    window.WindowState = WindowState.Normal;
+                    this.maximizeIcon.Kind = PackIconMaterialKind.WindowMaximize;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Window window = button.CommandParameter as Window;
+            if (window == null)
+                return;
+            window.Close();
         }
     }
 }
