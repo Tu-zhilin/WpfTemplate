@@ -170,11 +170,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Component\MainWindowTitleBar.xaml.cs">
-      <DependentUpon>MainWindowTitleBar.xaml</DependentUpon>
+    <Compile Include="Component\NormalSideBar.xaml.cs">
+      <DependentUpon>NormalSideBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Component\WindowButton.xaml.cs">
-      <DependentUpon>WindowButton.xaml</DependentUpon>
+    <Compile Include="Component\NormalWindowButton.xaml.cs">
+      <DependentUpon>NormalWindowButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Framework\MainWindow\Interface\IMainWindow.cs" />
     <Compile Include="Framework\MainWindow\ViewModels\MainWindowViewModel.cs" />
@@ -184,6 +184,7 @@
     <Compile Include="Framework\MainWindow\Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Framework\Menu\Interface\IMenuItem.cs" />
     <Compile Include="Framework\Shell\Interface\IShell.cs" />
     <Compile Include="Framework\Startup\Interface\IStartup.cs" />
     <Compile Include="Framework\Startup\StartupBase.cs" />
@@ -218,11 +219,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Component\MainWindowTitleBar.xaml">
+    <Page Include="Component\NormalSideBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Component\WindowButton.xaml">
+    <Page Include="Component\NormalWindowButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

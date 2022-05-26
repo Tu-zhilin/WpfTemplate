@@ -20,9 +20,9 @@ namespace WpfTemplate.Component
     /// <summary>
     /// WindowButton.xaml 的交互逻辑
     /// </summary>
-    public partial class WindowButton : UserControl
+    public partial class NormalWindowButton : UserControl
     {
-        public WindowButton()
+        public NormalWindowButton()
         {
             InitializeComponent();
         }

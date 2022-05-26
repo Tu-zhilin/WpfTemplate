@@ -57,8 +57,8 @@ namespace WpfTemplate.Framework.BootStraper
         {
             List<Assembly> assemblies = new List<Assembly>();
             assemblies.AddRange(base.SelectAssemblies());
-            assemblies.AddRange(ExtraAssemblies);
-            //在此处添加你的程序集
+            assemblies.Add(Assembly.GetAssembly(typeof(AppBootStrapper)));
+            assemblies.AddRange(ExtraAssemblies); 
             return assemblies;
         }
 

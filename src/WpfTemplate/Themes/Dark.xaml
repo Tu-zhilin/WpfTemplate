@@ -8,8 +8,10 @@
     <!--窗体背景-->
     <SolidColorBrush x:Key="WindowBackground" Color="#404040"/>
     <!--标题栏背景-->
-    <SolidColorBrush x:Key="TitleBarBackground" Color="#404040"/>
+    <SolidColorBrush x:Key="TitleBarBackground" Color="#4D4D4D"/>
     <!--字体颜色-->
     <SolidColorBrush x:Key="Foreground" Color="White"/>
+    <!--菜单栏背景-->
+    <SolidColorBrush x:Key="MenuBackground" Color="#4D4D4D"/>
 
 </ResourceDictionary>

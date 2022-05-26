@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfTemplateDemo.AppDomain.Shell.Views"
              mc:Ignorable="d" 
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:component="clr-namespace:WpfTemplate.Component;assembly=WpfTemplate"
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
@@ -12,6 +13,30 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <component:MainWindowTitleBar Grid.Row="0"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <component:NormalWindowButton Grid.Column="2"
+                                      Grid.Row="0"/>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.Column="1">
+            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=Title}"
+                       Foreground="{DynamicResource Foreground}"
+                       FontSize="16"
+                       Margin="0,0,10,0"/>
+            <icon:PackIconMaterial Kind="Robot"
+                                   Foreground="{DynamicResource Foreground}"
+                                   VerticalAlignment="Center"/>
+        </StackPanel>
+        <Border Grid.Column="0"
+                Grid.Row="1"
+                Background="#4D4D4D"
+                Margin="20,0,0,20"
+                CornerRadius="10">
+        </Border>
     </Grid>
 </UserControl>
