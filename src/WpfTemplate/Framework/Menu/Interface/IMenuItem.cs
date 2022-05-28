@@ -7,7 +7,7 @@ using MahApps.Metro.IconPacks;
 
 namespace WpfTemplate.Framework.Menu.Interface
 {
-    public interface IMenuItem
+    public interface IMenuItem: IComparable<IMenuItem>
     {
         string Name { get;}
 
@@ -16,5 +16,7 @@ namespace WpfTemplate.Framework.Menu.Interface
         bool IsActive { get; set; }
 
         void Click(EventArgs args);
+
+        int Index { get; }
     }
 }

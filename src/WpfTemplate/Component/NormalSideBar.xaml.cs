@@ -28,7 +28,9 @@ namespace WpfTemplate.Component
             InitializeComponent();
             this.DataContext = this;
 
-            Items = new ObservableCollection<IMenuItem>(IoC.GetAll<IMenuItem>());
+            var list = IoC.GetAll<IMenuItem>().ToList();
+            list.Sort();
+            Items = new ObservableCollection<IMenuItem>(list);
         }
 
         public ObservableCollection<IMenuItem> Items { get; set; }
@@ -37,10 +39,13 @@ namespace WpfTemplate.Component
         public IMenuItem ActiveItem
         {
             get => _activeItem;
-            set
-            {
-                _activeItem = value;
-            }
+            set => ItemChange(value);
+        }
+
+        private void ItemChange(IMenuItem item)
+        {
+            _activeItem = item;
+            _activeItem.Click(EventArgs.Empty);
         }
     }
 }

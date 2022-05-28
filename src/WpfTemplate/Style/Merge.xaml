@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfTemplate.Style">
+
+    <!--将所有Style文件包含在这一个文件-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="WindowButtonStyle.xaml"/>
+        <ResourceDictionary Source="NormalSideBarStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

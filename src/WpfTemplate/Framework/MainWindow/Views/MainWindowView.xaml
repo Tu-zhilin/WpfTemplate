@@ -13,12 +13,19 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen" 
         AllowsTransparency="True"
-        Title="{Binding Title}"
-        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
+        Title="{Binding Title}">
 
     <Border Background="{DynamicResource WindowBackground}"
             CornerRadius="15"
             MouseDown="Border_MouseDown">
         <ContentControl cal:View.Model="{Binding ActiveItem}"/>
+        <!--<Border.Effect>
+            <DropShadowEffect Color="Red"
+                              ShadowDepth="0"
+                              BlurRadius="5"
+                              Direction="0"
+                              Opacity="0.3">
+            </DropShadowEffect>
+        </Border.Effect>-->
     </Border>
 </Window>

@@ -26,7 +26,16 @@ namespace WpfTemplate.Framework.MainWindow.Views
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            if (e.ClickCount == 2)
+            {
+                if (this.WindowState == WindowState.Maximized)
+                    this.WindowState = WindowState.Normal;
+                else
+                    this.WindowState = WindowState.Maximized;
+            }
+
+            else if(e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }
