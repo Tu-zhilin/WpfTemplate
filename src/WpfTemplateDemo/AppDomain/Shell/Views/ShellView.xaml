@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:component="clr-namespace:WpfTemplate.Component;assembly=WpfTemplate"
+             xmlns:cal="http://caliburnmicro.com"
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
         <Grid.RowDefinitions>
@@ -34,5 +35,14 @@
         </StackPanel>
         <component:NormalSideBar Grid.Row="1"
                                  Margin="20,10,0,20"/>
+        <ContentControl x:Name="Content"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="20,10,20,20"
+                        FontSize="25"
+                        Foreground="{DynamicResource Foreground}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

@@ -176,9 +176,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppDomain\Module\DataFilter\Menu\MenuItem.cs" />
+    <Compile Include="AppDomain\Module\DataFilter\ViewModels\DataFilterViewModel.cs" />
+    <Compile Include="AppDomain\Module\DataFilter\Views\DataFilterView.xaml.cs">
+      <DependentUpon>DataFilterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppDomain\Module\DataSearch\Menu\MenuItem.cs" />
+    <Compile Include="AppDomain\Module\DataSearch\ViewModels\DataSearchViewModel.cs" />
+    <Compile Include="AppDomain\Module\DataSearch\Views\DataSearchView.xaml.cs">
+      <DependentUpon>DataSearchView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppDomain\Module\Home\Menu\MenuItem.cs" />
+    <Compile Include="AppDomain\Module\Home\ViewModels\HomeViewModel.cs" />
+    <Compile Include="AppDomain\Module\Home\Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AppDomain\Module\Interface\IMudule.cs" />
+    <Compile Include="AppDomain\Shell\Interface\IShow.cs" />
     <Compile Include="AppDomain\Shell\ViewModels\ShellViewModel.cs" />
     <Compile Include="AppDomain\Shell\Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -220,14 +233,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AppDomain\Module\DataFilter\Views\DataFilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppDomain\Module\DataSearch\Views\DataSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppDomain\Module\Home\Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AppDomain\Shell\Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AppDomain\Module\DataSearch\ViewModels\" />
-    <Folder Include="AppDomain\Module\DataSearch\Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
