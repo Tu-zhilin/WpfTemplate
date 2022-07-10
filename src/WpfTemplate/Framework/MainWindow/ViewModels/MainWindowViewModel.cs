@@ -1,16 +1,7 @@
 ﻿using Caliburn.Micro;
-using MahApps.Metro.IconPacks;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using WpfTemplate.Framework.MainWindow.Interface;
-using WpfTemplate.Framework.MainWindow.Views;
-using WpfTemplate.Framework.Shell.Interface;
-using WpfTemplate.Framework.Startup.Interface;
+using WpfTemplate.Framework.Shell;
 
 namespace WpfTemplate.Framework.MainWindow.ViewModels
 {
@@ -18,13 +9,9 @@ namespace WpfTemplate.Framework.MainWindow.ViewModels
     public class MainWindowViewModel: Conductor<IShell>.Collection.OneActive, IMainWindow, IPartImportsSatisfiedNotification
     {
         /// <summary>
-        /// 主视图
-        /// </summary>
-        private MainWindowView _view;
-        /// <summary>
         /// 窗口标题
         /// </summary>
-        private string _title = "Wpf Template";
+        private string _title = "WPF TEMPLATE";
         public string Title
         {
             get => _title;
@@ -74,37 +61,19 @@ namespace WpfTemplate.Framework.MainWindow.ViewModels
             }
         }
 
-        private PackIconMaterialKind _icon = PackIconMaterialKind.Robot;
-        public PackIconMaterialKind Icon
-        {
-            get => _icon;
-            set
-            {
-                _icon = value;
-                NotifyOfPropertyChange();
-            }
-        }
-
         public MainWindowViewModel()
         {
             
         }
 
-        protected override void OnViewLoaded(object view)
-        {
-            _view = view as MainWindowView;
-        }
-
         /// <summary>
-        /// 部件导入完成通知
+        /// 导入完成通知
         /// </summary>
-        public void OnImportsSatisfied()
-        {
-            ActivateItemAsync(IoC.Get<IShell>());
-        }
+        public void OnImportsSatisfied() => ActivateItemAsync(IoC.Get<IShell>());
 
         public void Dispose()
         {
+            //TODO:提示界面,是否关闭程序
             ActiveItem?.Dispose();
         }
     }

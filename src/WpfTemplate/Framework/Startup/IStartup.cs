@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfTemplate.Framework.MainWindow;
+using WpfTemplate.Framework.ThemeManager;
 
-namespace WpfTemplate.Framework.Startup.Interface
+namespace WpfTemplate.Framework.Startup
 {
     public interface IStartup
     {

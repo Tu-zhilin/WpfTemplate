@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfTemplate.Framework.MainWindow.Interface;
-using WpfTemplate.Framework.Startup.Interface;
-using WpfTemplate.Framework.Themes.Interface;
+﻿using System.ComponentModel.Composition;
+using WpfTemplate.Framework.MainWindow;
+using WpfTemplate.Framework.ThemeManager;
 
 namespace WpfTemplate.Framework.Startup
 {
@@ -20,19 +14,10 @@ namespace WpfTemplate.Framework.Startup
         [Import]
         protected IThemeManager _themeManager;
 
-        public StartupBase()
-        {
-            
-        }
+        public StartupBase() { }
 
-        public virtual void PreInitialize()
-        {
-            _themeManager?.SetCurrentTheme("Dark");
-        }
+        public abstract void PreInitialize();
 
-        public virtual void Initialize()
-        {
-
-        }
+        public abstract void Initialize();
     }
 }

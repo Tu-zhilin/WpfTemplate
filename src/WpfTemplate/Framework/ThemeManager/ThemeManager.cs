@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using WpfTemplate.Framework.Themes.Interface;
 
-namespace WpfTemplate.Framework.Themes
+namespace WpfTemplate.Framework.ThemeManager
 {
     [Export(typeof(IThemeManager))]
     public class ThemeManager : IThemeManager
     {
+        /// <summary>
+        /// 样式集合
+        /// </summary>
         [ImportMany]
         private List<ITheme> _themes;
 
@@ -20,7 +20,9 @@ namespace WpfTemplate.Framework.Themes
         public EventHandler ThemeChangeHander { get; set; }
 
         private ITheme _currentTheme;
-
+        /// <summary>
+        /// 当前样式
+        /// </summary>
         public ITheme CurrentTheme
         {
             get => _currentTheme;
@@ -29,10 +31,7 @@ namespace WpfTemplate.Framework.Themes
 
         private ResourceDictionary _applicationResourceDictionary;
 
-        public ThemeManager()
-        {
-
-        }
+        public ThemeManager() { }
 
         public void SetCurrentTheme(string name)
         {
@@ -56,11 +55,12 @@ namespace WpfTemplate.Framework.Themes
             _applicationResourceDictionary.MergedDictionaries.Clear();
             //增加样式文件
             foreach (var uri in theme.Resources)
+            {
                 _applicationResourceDictionary.MergedDictionaries.Add(new ResourceDictionary
                 {
                     Source = uri
                 });
-
+            }
             _applicationResourceDictionary.EndInit();
             //更新事件通知
             ThemeChangeHander?.Invoke(this, EventArgs.Empty);

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfTemplateDemo.AppDomain.Shell.Interface
+namespace WpfTemplate.Framework.Shell
 {
-    public interface IShow
+    public interface IShell: IDisposable
     {
-        void Show(object viewModel);
+
     }
 }

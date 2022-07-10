@@ -4,11 +4,9 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
-using WpfTemplate.Framework.MainWindow.Interface;
+using WpfTemplate.Framework.MainWindow;
 using WpfTemplate.Framework.Startup.Interface;
 
 namespace WpfTemplate.Framework.BootStraper
@@ -18,6 +16,9 @@ namespace WpfTemplate.Framework.BootStraper
     /// </summary>
     public class AppBootStrapper : BootstrapperBase
     {
+        /// <summary>
+        /// 容器
+        /// </summary>
         private CompositionContainer container;
 
         /// <summary>
@@ -25,10 +26,7 @@ namespace WpfTemplate.Framework.BootStraper
         /// </summary>
         protected virtual IEnumerable<Assembly> ExtraAssemblies => Enumerable.Empty<Assembly>();
 
-        public AppBootStrapper()
-        {
-            Initialize();
-        }
+        public AppBootStrapper() => Initialize();
 
         /// <summary>
         /// 配置IOC（MEF）
@@ -37,9 +35,9 @@ namespace WpfTemplate.Framework.BootStraper
         {
             base.Configure();
 
+            //加载程序集
             var l = AssemblySource.Instance.Select(x => new AssemblyCatalog(x));
             var catalog = new AggregateCatalog(l);
-           
             container = new CompositionContainer(catalog);
             var batch = new CompositionBatch();
             batch.AddExportedValue<IWindowManager>(new WindowManager());
@@ -47,6 +45,11 @@ namespace WpfTemplate.Framework.BootStraper
             batch.AddExportedValue(container);
             batch.AddExportedValue(this);
             container.Compose(batch);
+
+            //初始化,用户根据自己的需求增加初始化功能
+            var startUp = IoC.Get<IStartup>();
+            startUp?.PreInitialize();
+            startUp?.Initialize();
         }
 
         /// <summary>
@@ -57,7 +60,6 @@ namespace WpfTemplate.Framework.BootStraper
         {
             List<Assembly> assemblies = new List<Assembly>();
             assemblies.AddRange(base.SelectAssemblies());
-            assemblies.Add(Assembly.GetAssembly(typeof(AppBootStrapper)));
             assemblies.AddRange(ExtraAssemblies); 
             return assemblies;
         }
@@ -76,8 +78,8 @@ namespace WpfTemplate.Framework.BootStraper
             if (exports.Any())
                 return exports.First();
             else
-                return null;
-            //throw new Exception($"无法找到 {service.ToString()}");
+                //不报错,用户自行处理
+                return null; 
         }
 
         /// <summary>
@@ -85,10 +87,7 @@ namespace WpfTemplate.Framework.BootStraper
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        protected override IEnumerable<object> GetAllInstances(Type service)
-        {
-            return container.GetExportedValues<object>(AttributedModelServices.GetContractName(service));
-        }
+        protected override IEnumerable<object> GetAllInstances(Type service) => container.GetExportedValues<object>(AttributedModelServices.GetContractName(service));
 
         /// <summary>
         /// 注入
@@ -103,11 +102,6 @@ namespace WpfTemplate.Framework.BootStraper
         /// <param name="e"></param>
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            //初始化,用户根据自己的需求增加初始化功能
-            var startUp = IoC.Get<IStartup>();
-            startUp?.PreInitialize();
-            startUp?.Initialize();
-            
             DisplayRootViewFor<IMainWindow>();
         }
 
@@ -118,8 +112,10 @@ namespace WpfTemplate.Framework.BootStraper
         /// <param name="e"></param>
         protected override void OnExit(object sender, EventArgs e)
         {
-            base.OnExit(sender, e);
             IoC.Get<IMainWindow>().Dispose();
+            base.OnExit(sender, e);
         }
     }
 }
+
+//TODO:设计界面加载动画 -> backgroundworker

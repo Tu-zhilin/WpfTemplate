@@ -4,8 +4,7 @@
 
     <!--将所有Style文件包含在这一个文件-->
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="WindowButtonStyle.xaml"/>
-        <ResourceDictionary Source="NormalSideBarStyle.xaml"/>
+
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

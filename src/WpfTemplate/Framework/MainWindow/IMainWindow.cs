@@ -1,11 +1,7 @@
-﻿using MahApps.Metro.IconPacks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using WpfTemplate.Framework.Shell;
 
-namespace WpfTemplate.Framework.MainWindow.Interface
+namespace WpfTemplate.Framework.MainWindow
 {
     public interface IMainWindow: IDisposable
     {
@@ -21,9 +17,5 @@ namespace WpfTemplate.Framework.MainWindow.Interface
         /// 窗口高度
         /// </summary>
         double Height { get; set; }
-        /// <summary>
-        /// 图标
-        /// </summary>
-        PackIconMaterialKind Icon { get; set; }
     }
 }

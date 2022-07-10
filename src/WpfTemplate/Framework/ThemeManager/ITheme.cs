@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WpfTemplate.Framework.Themes.Interface
+namespace WpfTemplate.Framework.ThemeManager
 {
     public interface ITheme
     {

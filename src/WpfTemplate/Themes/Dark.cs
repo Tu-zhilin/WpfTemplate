@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfTemplate.Framework.Themes.Interface;
+using WpfTemplate.Framework.ThemeManager;
 
 namespace WpfTemplate.Framework.Themes
 {
@@ -17,7 +14,8 @@ namespace WpfTemplate.Framework.Themes
         {
             get
             {
-                yield return new Uri("pack://application:,,,/WpfTemplate;component/Themes/Dark.xaml"); 
+                yield return new Uri("pack://application:,,,/WpfTemplate;component/Themes/Dark.xaml");
+                yield return new Uri("pack://application:,,,/WpfTemplate;component/Style/Merge.xaml"); //style
             }
         }
     }
