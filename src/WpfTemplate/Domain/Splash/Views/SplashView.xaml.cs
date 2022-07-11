@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfTemplate.Framework.MainWindow.Views
+namespace WpfTemplate.Domain.Splash.Views
 {
     /// <summary>
-    /// MainWindowView.xaml 的交互逻辑
+    /// SplashView.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindowView : Window
+    public partial class SplashView : Window
     {
-        public MainWindowView()
+        public SplashView()
         {
             InitializeComponent();
         }

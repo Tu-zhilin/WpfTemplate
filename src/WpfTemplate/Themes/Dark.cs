@@ -15,7 +15,7 @@ namespace WpfTemplate.Framework.Themes
             get
             {
                 yield return new Uri("pack://application:,,,/WpfTemplate;component/Themes/Dark.xaml");
-                yield return new Uri("pack://application:,,,/WpfTemplate;component/Style/Merge.xaml"); //style
+                yield return new Uri("pack://application:,,,/WpfTemplate;component/Style/Merge.xaml"); 
             }
         }
     }

@@ -61,19 +61,21 @@ namespace WpfTemplate.Framework.MainWindow.ViewModels
             }
         }
 
-        public MainWindowViewModel()
-        {
-            
-        }
+        public MainWindowViewModel() { }
 
         /// <summary>
         /// 导入完成通知
         /// </summary>
         public void OnImportsSatisfied() => ActivateItemAsync(IoC.Get<IShell>());
 
+        public void Close()
+        {
+            Dispose();
+            Application.Current.Shutdown();
+        }
+
         public void Dispose()
         {
-            //TODO:提示界面,是否关闭程序
             ActiveItem?.Dispose();
         }
     }

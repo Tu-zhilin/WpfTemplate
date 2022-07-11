@@ -74,7 +74,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="App\Startup\Startup.cs" />
+    <Compile Include="Domain\Splash\ViewModels\SplashViewModel.cs" />
+    <Compile Include="Domain\Splash\Views\SplashView.xaml.cs">
+      <DependentUpon>SplashView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Startup\Startup.cs" />
     <Compile Include="Framework\MainWindow\IMainWindow.cs" />
     <Compile Include="Framework\MainWindow\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Framework\BootStrapper\AppBootStraper.cs" />
@@ -122,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Domain\Splash\Views\SplashView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Framework\MainWindow\Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

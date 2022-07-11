@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:WpfTemplate.Framework.MainWindow.Views"
         xmlns:cal="http://caliburnmicro.com"
         mc:Ignorable="d" 
-        Title="{Binding Title}">
+        WindowStartupLocation="CenterScreen"
+        Height="{Binding Height, Mode=TwoWay}"
+        Width="{Binding Width, Mode=TwoWay}"
+        Title="{Binding Title}"
+        cal:Message.Attach="[Event Closed] = [Action Close]">
 
 </Window>

@@ -6,8 +6,9 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using Caliburn.Micro;
+using WpfTemplate.Domain.Splash.ViewModels;
 using WpfTemplate.Framework.MainWindow;
-using WpfTemplate.Framework.Startup.Interface;
+using WpfTemplate.Framework.Startup;
 
 namespace WpfTemplate.Framework.BootStraper
 {
@@ -19,7 +20,12 @@ namespace WpfTemplate.Framework.BootStraper
         /// <summary>
         /// 容器
         /// </summary>
-        private CompositionContainer container;
+        private CompositionContainer _container;
+
+        /// <summary>
+        /// 是否启动Splash界面
+        /// </summary>
+        private readonly bool _use_splash = true;
 
         /// <summary>
         /// 用以添加额外的程序集
@@ -35,21 +41,18 @@ namespace WpfTemplate.Framework.BootStraper
         {
             base.Configure();
 
+            //通过主界面关闭程序
+            Application.ShutdownMode = ShutdownMode.OnExplicitShutdown;
             //加载程序集
-            var l = AssemblySource.Instance.Select(x => new AssemblyCatalog(x));
-            var catalog = new AggregateCatalog(l);
-            container = new CompositionContainer(catalog);
+            var _l = AssemblySource.Instance.Select(x => new AssemblyCatalog(x));
+            var _catalog = new AggregateCatalog(_l);
+            _container = new CompositionContainer(_catalog);
             var batch = new CompositionBatch();
             batch.AddExportedValue<IWindowManager>(new WindowManager());
             batch.AddExportedValue<IEventAggregator>(new EventAggregator());
-            batch.AddExportedValue(container);
+            batch.AddExportedValue(_container);
             batch.AddExportedValue(this);
-            container.Compose(batch);
-
-            //初始化,用户根据自己的需求增加初始化功能
-            var startUp = IoC.Get<IStartup>();
-            startUp?.PreInitialize();
-            startUp?.Initialize();
+            _container.Compose(batch);
         }
 
         /// <summary>
@@ -73,13 +76,12 @@ namespace WpfTemplate.Framework.BootStraper
         protected override object GetInstance(Type service, string key = null)
         {
             string contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(service) : key;
-            var exports = container.GetExportedValues<object>(contract);
+            var exports = _container.GetExportedValues<object>(contract);
 
             if (exports.Any())
                 return exports.First();
             else
-                //不报错,用户自行处理
-                return null; 
+                return null;  
         }
 
         /// <summary>
@@ -87,13 +89,13 @@ namespace WpfTemplate.Framework.BootStraper
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        protected override IEnumerable<object> GetAllInstances(Type service) => container.GetExportedValues<object>(AttributedModelServices.GetContractName(service));
+        protected override IEnumerable<object> GetAllInstances(Type service) => _container.GetExportedValues<object>(AttributedModelServices.GetContractName(service));
 
         /// <summary>
         /// 注入
         /// </summary>
         /// <param name="instance"></param>
-        protected override void BuildUp(object instance) => container.SatisfyImportsOnce(instance);
+        protected override void BuildUp(object instance) => _container.SatisfyImportsOnce(instance);
 
         /// <summary>
         /// 程序启动
@@ -102,6 +104,18 @@ namespace WpfTemplate.Framework.BootStraper
         /// <param name="e"></param>
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
+            //Splashing
+            if (_use_splash)
+            {
+                IoC.Get<IWindowManager>().ShowDialogAsync(new SplashViewModel());
+            }
+            else
+            {
+                var startUp = IoC.Get<IStartup>();
+                startUp?.PreInitialize();
+                startUp?.Initialize();
+            }
+
             DisplayRootViewFor<IMainWindow>();
         }
 
@@ -117,5 +131,3 @@ namespace WpfTemplate.Framework.BootStraper
         }
     }
 }
-
-//TODO:设计界面加载动画 -> backgroundworker
