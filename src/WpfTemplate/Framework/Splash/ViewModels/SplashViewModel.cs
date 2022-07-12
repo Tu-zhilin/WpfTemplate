@@ -3,7 +3,7 @@ using System.Threading;
 using Caliburn.Micro;
 using WpfTemplate.Framework.Startup;
 
-namespace WpfTemplate.Domain.Splash.ViewModels
+namespace WpfTemplate.Framework.Splash.ViewModels
 {
     public class SplashViewModel:Screen
     {

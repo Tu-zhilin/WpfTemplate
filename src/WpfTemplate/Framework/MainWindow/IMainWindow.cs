@@ -3,7 +3,7 @@ using WpfTemplate.Framework.Shell;
 
 namespace WpfTemplate.Framework.MainWindow
 {
-    public interface IMainWindow: IDisposable
+    public interface IMainWindow
     {
         /// <summary>
         /// 主窗口标题

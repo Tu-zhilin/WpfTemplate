@@ -11,7 +11,7 @@ namespace WpfTemplate.Framework.MainWindow.ViewModels
         /// <summary>
         /// 窗口标题
         /// </summary>
-        private string _title = "WPF TEMPLATE";
+        private string _title = "Template Project";
         public string Title
         {
             get => _title;
@@ -70,13 +70,9 @@ namespace WpfTemplate.Framework.MainWindow.ViewModels
 
         public void Close()
         {
-            Dispose();
-            Application.Current.Shutdown();
-        }
-
-        public void Dispose()
-        {
             ActiveItem?.Dispose();
+            //TODO:是否关闭程序
+            Application.Current.Shutdown();
         }
     }
 }

@@ -6,8 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using Caliburn.Micro;
-using WpfTemplate.Domain.Splash.ViewModels;
 using WpfTemplate.Framework.MainWindow;
+using WpfTemplate.Framework.Splash.ViewModels;
 using WpfTemplate.Framework.Startup;
 
 namespace WpfTemplate.Framework.BootStraper
@@ -126,8 +126,7 @@ namespace WpfTemplate.Framework.BootStraper
         /// <param name="e"></param>
         protected override void OnExit(object sender, EventArgs e)
         {
-            IoC.Get<IMainWindow>().Dispose();
-            base.OnExit(sender, e);
+            //nothing
         }
     }
 }

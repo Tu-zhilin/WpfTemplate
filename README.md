@@ -13,3 +13,4 @@
 * MainWindow
 * Shell
 * ThemeManager
+* Splash

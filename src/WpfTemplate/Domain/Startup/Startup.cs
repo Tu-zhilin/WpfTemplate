@@ -14,6 +14,9 @@ namespace WpfTemplate.Domain.Startup
         public override void Initialize()
         {
             //初始化
+            _mainWindow.Width = 1280.0;
+            _mainWindow.Height = 720.0;
+            _mainWindow.Title = "Template Project";
         }
     }
 }

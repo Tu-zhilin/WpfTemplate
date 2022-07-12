@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfTemplate.Domain.Splash.Views
+namespace WpfTemplate.Framework.Splash.Views
 {
     /// <summary>
     /// SplashView.xaml 的交互逻辑
